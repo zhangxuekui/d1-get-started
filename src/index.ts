@@ -6,9 +6,9 @@ export default {
       // If you did not use `DB` as your binding name, change it here
       //"SELECT * FROM Holidays WHERE CompanyName = ?"
       const { results } = await env.DB.prepare(
-        "SELECT * FROM Holidays"
+        "SELECT * FROM Holidays where isPublic=?"
       )
-        // .bind("Bs Beverages")
+        .bind("1")
         .all();
       return Response.json(results);
     }
