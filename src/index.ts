@@ -2,12 +2,13 @@ export default {
   async fetch(request, env): Promise<Response> {
     const { pathname } = new URL(request.url);
 
-    if (pathname === "/api/beverages") {
+    if (pathname === "/api/holidays") {
       // If you did not use `DB` as your binding name, change it here
+      //"SELECT * FROM Holidays WHERE CompanyName = ?"
       const { results } = await env.DB.prepare(
-        "SELECT * FROM Customers WHERE CompanyName = ?"
+        "SELECT * FROM Holidays"
       )
-        .bind("Bs Beverages")
+        // .bind("Bs Beverages")
         .all();
       return Response.json(results);
     }
